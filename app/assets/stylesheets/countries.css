@@ -1,0 +1,15 @@
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding: 12px;
+}
+
+img {
+    width: 100px;
+}
+
+.even {
+    background-color: beige;
+}

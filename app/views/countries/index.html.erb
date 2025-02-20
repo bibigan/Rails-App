@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'countries' %>
+
 <h1>Searching for - <%= @search_term %></h1>
 
 <% if @countries.any? %>
@@ -11,10 +13,10 @@
         </thead>
         <tbody>
             <% @countries.each do |country| %>
-            <tr>
+            <tr class="<%= cycle("even", "odd")%>">
             <td>
                 <% if country.dig('flags', 'png').present? %>
-                <%= image_tag(country['flags']['png'], style: 'width: 100px;') %>
+                <%= image_tag(country['flags']['png']) %>
                 <% else %>
                 <span>no flag</span>
                 <% end %>
