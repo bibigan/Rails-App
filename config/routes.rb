@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "countries/index"
+  get "countries/index", to: "countries#index"
   get "greeter/hello", to: "greeter#hello"
 
   get "greeter/goodbye"
@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root "countries#index"
 end
