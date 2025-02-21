@@ -1,108 +1,149 @@
-table {
-    border-collapse: collapse;
-}
-
-td {
-    padding: 12px;
-}
-
-img {
-    width: 100px;
-}
-
-.even {
-    background-color: beige;
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .search-form {
-    margin: 20px 0;
-  
-    .input-group {
-      max-width: 500px;
+  margin-bottom: 30px;
+
+  .search-group {
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .search-btn {
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+
+    &:hover{
+      background-color: #69e185;
     }
-  
-    .form-control {
-      border-radius: 4px 0 0 4px;
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.country-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+
+  th {
+    background: #f8f9fa;
+  }
+
+  .row-even { background: white; }
+  .row-odd { background: #f8f8f8; }
+}
+
+.flag-img {
+  max-width: 150px;
+  height: auto;
+  display: block;
+}
+
+.detail-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #28a745;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+
+  &:hover{
+    background-color: #69e185;
+  }
+}
+
+.search-heading {
+  margin: 25px 0;
+  font-size: 1.4em;
+  color: #333;
+}
+
+.no-results {
+  color: #666;
+  padding: 20px;
+  text-align: center;
+}
+
+.country-details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  .detail-header {
+    text-align: center;
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
-  
-    .btn {
-      border-radius: 0 4px 4px 0;
+
+    .country-flag {
+      margin: 20px 0;
+      img {
+        max-height: 200px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
     }
   }
 
-  .country-details {
-    max-width: 1200px;
-    margin: 0 auto;
+  .detail-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .detail-card {
+    background: #f8f9fa;
+    border-radius: 8px;
     padding: 20px;
-  
-    .detail-header {
-      text-align: center;
-      margin-bottom: 30px;
-  
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-      }
-  
-      .country-flag {
-        margin: 20px 0;
-        img {
-          max-height: 200px;
-          border: 1px solid #dee2e6;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .flag-description {
-          font-size: 0.9rem;
-          color: #6c757d;
-          margin-top: 10px;
-        }
-      }
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    h4 {
+      font-size: 19px;
+      color: #2c3e50;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
     }
-  
-    .detail-grid {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    dt {
+      font-weight: 600;
+      color: #495057;
+      margin-top: 10px;
     }
-  
-    .detail-card {
-      background: #f8f9fa;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  
-      h4 {
-        font-size: 19px;
-        color: #2c3e50;
-        border-bottom: 2px solid #e9ecef;
-        padding-bottom: 10px;
-        margin-bottom: 15px;
-      }
-  
-      dt {
-        font-weight: 600;
-        color: #495057;
-        margin-top: 10px;
-      }
-  
-      dd {
-        color: #6c757d;
-        margin-left: 0;
-      }
-  
-      .translations {
-        line-height: 1.6;
-        .badge {
-          font-weight: normal;
-        }
-      }
-    }
-  
-    .map-links {
-      .btn {
-        margin-bottom: 10px;
-      }
+
+    dd {
+      color: #6c757d;
+      margin-left: 0;
     }
   }
+}
