@@ -9,6 +9,7 @@
                 <th>Flag</th>
                 <th>Name</th>
                 <th>Region</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -16,13 +17,19 @@
             <tr class="<%= cycle("even", "odd")%>">
             <td>
                 <% if country.dig('flags', 'png').present? %>
-                <%= image_tag(country['flags']['png']) %>
+                    <%= image_tag(country['flags']['png']) %>
                 <% else %>
-                <span>no flag</span>
+                    <span>no flag</span>
                 <% end %>
             </td>
             <td><%= country.dig('name', 'common') %></td>
             <td><%= country['region'] %></td>
+            <td>
+                <%= link_to "View Details", country_details_path(
+                        name: country.dig('name', 'common'), 
+                        original_search_term: @search_term
+                    ), class: "btn btn-primary" %>
+            </td>
             </tr>
         <% end %>
         </tbody>

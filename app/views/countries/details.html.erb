@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag 'countries' %>
+
+<h1>Country Details - <%= @country_name %></h1>
+
+<% if @country %>
+  <p><strong>Official Name:</strong> <%= @country.dig("name", "official") %></p>
+  <p><strong>Region:</strong> <%= @country["region"] %></p>
+  <p><strong>Subregion:</strong> <%= @country["subregion"] %></p>
+  <p><strong>Population:</strong> <%= @country["population"] %></p>
+  
+  <% if @country.dig("flags", "png").present? %>
+    <img src="<%= @country["flags"]["png"] %>" alt="Flag of <%= @country_name %>">
+  <% end %>
+
+<% else %>
+  <p>Country details not found.</p>
+<% end %>
+
+<%= link_to "Back to list", countries_index_path(
+        looking_for: params[:original_search_term]
+    ), class: "btn btn-secondary" %>
+

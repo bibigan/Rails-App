@@ -5,4 +5,9 @@ class CountriesController < ApplicationController
     @search_term = params[:looking_for] || "ca"
     @countries = Country.search(@search_term)
   end
+
+  def details
+    @country_name = params[:name]
+    @country = Country.search_first_one(@country_name)
+  end
 end
