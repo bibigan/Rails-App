@@ -1,22 +1,74 @@
 <%= stylesheet_link_tag 'countries' %>
 
-<h1>Country Details - <%= @country_name %></h1>
+<div class="country-details">
 
-<% if @country %>
-  <p><strong>Official Name:</strong> <%= @country.dig("name", "official") %></p>
-  <p><strong>Region:</strong> <%= @country["region"] %></p>
-  <p><strong>Subregion:</strong> <%= @country["subregion"] %></p>
-  <p><strong>Population:</strong> <%= @country["population"] %></p>
-  
-  <% if @country.dig("flags", "png").present? %>
-    <img src="<%= @country["flags"]["png"] %>" alt="Flag of <%= @country_name %>">
-  <% end %>
+    <%= link_to "Back to list", countries_index_path(
+            looking_for: params[:original_search_term]
+        ), class: "btn btn-secondary" %>
 
-<% else %>
-  <p>Country details not found.</p>
-<% end %>
+    <% if @country %>
+        <div class="detail-header">
+            <h1><%= @country_name %></h1>
+            <h3 class="text-muted">Official Name - <%= @country.dig("name", "official") %></h3>
+        
+            <% if @country.dig("flags", "png").present? %>
+                <div class="country-flag">
+                    <img src="<%= @country["flags"]["png"] %>" alt="Flag of <%= @country_name %>">
+                </div>
+            <% end %>
+        </div>
 
-<%= link_to "Back to list", countries_index_path(
-        looking_for: params[:original_search_term]
-    ), class: "btn btn-secondary" %>
+        <div class="detail-grid">
+            <div class="detail-column">
+                <div class="detail-card">
+                    <h4>Basic Information</h4>
+                    <dl>
+                        <dt>Capital</dt>
+                        <dd><%= @country["capital"]&.join(', ') %></dd>
+
+                        <dt>Region</dt>
+                        <dd><%= @country["region"] %> → <%= @country["subregion"] %></dd>
+
+                        <dt>Population</dt>
+                        <dd><%= number_with_delimiter(@country["population"]) %> People</dd>
+
+                        <dt>Area</dt>
+                        <dd><%= number_with_delimiter(@country["area"]) %> km²</dd>
+
+                        <dt>Timezones</dt>
+                        <dd><%= @country["timezones"]&.join(', ') %></dd>
+                    </dl>
+                </div>
+            </div>
+
+        <div class="detail-column">
+            <div class="detail-card">
+            <h4>Other Information</h4>
+            <dl>
+                <dt>Languages</dt>
+                <dd><%= @country["languages"]&.values&.join(', ') %></dd>
+
+                <dt>Currencies</dt>
+                <dd>
+                <% @country["currencies"]&.each do |code, info| %>
+                    <%= "#{info['name']} (#{code}) - #{info['symbol']}" %><br>
+                <% end %>
+                </dd>
+
+                <dt>Driving Directions</dt>
+                <dd><%= @country.dig("car", "side").capitalize %> Hand Drive</dd>
+
+                <dt>Postal Code Format</dt>
+                <dd><%= @country.dig("postalCode", "format") %></dd>
+
+                <dt>International Calling Code</dt>
+                <dd><%= @country.dig("idd", "root") %><%= @country.dig("idd", "suffixes")&.first %></dd>
+            </dl>
+            </div>
+        </div>
+    </div>
+    <% else %>
+        <p>Country details not found.</p>
+    <% end %>
+</div>
 
