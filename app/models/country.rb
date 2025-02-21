@@ -8,7 +8,9 @@ class Country
   # default_params fields: "name,flags,region"
 
   def self.all
-    get("/all?fields=name,flags,region")
+    response = get("/all?fields=name,flags,region")
+
+    response.success? ? response.parsed_response : nil
   end
 
   def self.search(name)
@@ -16,7 +18,9 @@ class Country
     encoded_name = URI::Parser.new.escape(name)
     Rails.logger.debug { "[DEBUG] Encoded name: #{encoded_name}" }
 
-    get ("/name/#{encoded_name}?fields=name,flags,region")
+    response = get ("/name/#{encoded_name}?fields=name,flags,region")
+
+    response.success? ? response.parsed_response : nil
   end
 
   def self.search_first_one(name)

@@ -13,7 +13,7 @@
 
   <h2 class="search-heading">Searching for - <%= @search_term %></h2>
 
-  <% if @countries.any? %>
+  <% if @countries && @countries.any? %>
     <div class="table-wrapper">
       <table class="country-table">
         <thead>
