@@ -12,18 +12,21 @@ class Country
   end
 
   def self.search(name)
-    encoded_name = CGI.escape(name)
+    Rails.logger.debug { "[DEBUG] Original name: #{name}" }
+    encoded_name = URI::Parser.new.escape(name)
+    Rails.logger.debug { "[DEBUG] Encoded name: #{encoded_name}" }
+
     get ("/name/#{encoded_name}?fields=name,flags,region")
   end
 
   def self.search_first_one(name)
-    encoded_name = CGI.escape(name)
+    Rails.logger.debug { "[DEBUG] Original name: #{name}" }
+    encoded_name = URI::Parser.new.escape(name)
+    Rails.logger.debug { "[DEBUG] Encoded name: #{encoded_name}" }
+
     response = get ("/name/#{encoded_name}?fullText=true")
-    if response.success?
-      response.parsed_response.first
-    else
-      nil
-    end
+
+    response.success? ? response.parsed_response.first : nil
   end
 end
 
