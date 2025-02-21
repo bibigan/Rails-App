@@ -1,5 +1,17 @@
 <%= stylesheet_link_tag 'countries' %>
 
+<%= form_with url: countries_index_path, method: :get, class: "search-form" do |f| %>
+  <div class="input-group">
+    <%= f.text_field :looking_for, 
+          value: @search_term, 
+          placeholder: "Enter the name of the country or region...",
+          class: "form-control" %>
+    <div class="input-group-append">
+      <%= f.submit "Search", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
 <h1>Searching for - <%= @search_term %></h1>
 
 <% if @countries.any? %>
