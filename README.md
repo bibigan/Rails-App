@@ -1,24 +1,60 @@
-# README
+# Countries Information Portal
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails web application that displays country information fetched from the REST Countries API.
 
-Things you may want to cover:
+[![Deployed on Heroku](https://img.shields.io/badge/Deployed%20on-Heroku-6762a6?style=flat-square&logo=heroku)](https://rails-countries-app-ff96bebe13c3.herokuapp.com)
 
-* Ruby version
+## Features
+### Core Functionality
+🌍 **Country Data Browser**
+- Fetches real-time data from [REST Countries API](https://restcountries.com)
+- Displays comprehensive country information including:
+  - National flags
+  - Official names
+  - Geographical regions
+  - Population data
+  - Currency details
+  - Timezones
 
-* System dependencies
+🔍 **Smart Search**
+- Instant search by country name
+- Dynamic filtering of results
+- Case-insensitive matching
 
-* Configuration
+📑 **Responsive Table Display**
+- Clean tabular presentation of country data
 
-* Database creation
+📄 **Detail View**
+- Country profile pages
+- Extended information display
 
-* Database initialization
+### Technical Implementation
+⚙️ **Architecture**
+- MVC pattern implementation
+- Single controller (`CountriesController`)
+- Modular data handling (`Country` model)
 
-* How to run the test suite
+🎨 **Frontend**
+- Custom CSS styling (`app/assets/stylesheets/countries.scss`)
 
-* Services (job queues, cache servers, search engines, etc.)
+🚀 **Deployment**
+- Heroku cloud platform hosting, visit the website to this link [Open app](https://rails-countries-app-ff96bebe13c3.herokuapp.com)
 
-* Deployment instructions
+## Development Setup
 
-* ...
+### Requirements
+- Ruby 3.4.1
+- Rails 8.0.1
+- Bundler 2.6.2
+
+### Installation
+```bash
+# Clone repository
+git clone https://github.com/bibigan/Rails-App.git
+cd Rails-App
+
+# Install dependencies
+bundle install
+
+# Start development server
+rails server
