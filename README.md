@@ -56,5 +56,8 @@ cd Rails-App
 # Install dependencies
 bundle install
 
+# create database
+rails db:create
+
 # Start development server
 rails server

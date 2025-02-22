@@ -38,9 +38,12 @@ gem "thruster", require: false
 
 gem "httparty"
 
-gem "pg"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+
+group :development, :test, :production do
+  gem "pg"
+end
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -51,9 +54,6 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-
-  # Use sqlite3 as the database for Active Record
-  gem "sqlite3", ">= 2.1"
 end
 
 group :development do
@@ -68,6 +68,5 @@ group :test do
 end
 
 group :production do
-  gem "pg"
   gem "rails_12factor"
 end
